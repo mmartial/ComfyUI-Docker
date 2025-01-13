@@ -105,6 +105,10 @@ services:
       - 8188:8188
     volumes:
       - ./run:/comfy/mnt
+      # Optional: Separate models, workflows, and outputs to safely delete the run folder without loss.
+      - ./models:/comfy/mnt/ComfyUI/models
+      - ./workflows:/comfy/mnt/ComfyUI/user/default/workflows
+      - ./output:/comfy/mnt/ComfyUI/output
     restart: unless-stopped
     environment:
       - WANTED_UID=1000
